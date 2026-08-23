@@ -1,0 +1,8 @@
+services:
+  autenticacion-svc:
+    build: .
+    image: duoc/jv0101-caso04-autenticacion:1.0.0
+    container_name: caso04-autenticacion-svc
+    ports:
+      - "${PORT:-8080}:8080"
+    restart: unless-stopped

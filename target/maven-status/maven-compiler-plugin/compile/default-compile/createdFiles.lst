@@ -1,0 +1,6 @@
+cl\duoc\jv0101\caso04\autenticacion\CredencialApplication.class
+cl\duoc\jv0101\caso04\autenticacion\config\OpenApiConfig.class
+cl\duoc\jv0101\caso04\autenticacion\service\CredencialService.class
+cl\duoc\jv0101\caso04\autenticacion\repository\CredencialRepository.class
+cl\duoc\jv0101\caso04\autenticacion\model\Credencial.class
+cl\duoc\jv0101\caso04\autenticacion\controller\CredencialController.class

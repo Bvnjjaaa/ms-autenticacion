@@ -1,0 +1,6 @@
+cl\duoc\jv0101\caso04\autenticacion\cucumber\CucumberSpringConfiguration.class
+cl\duoc\jv0101\caso04\autenticacion\cucumber\CredencialSteps.class
+cl\duoc\jv0101\caso04\autenticacion\CredencialControllerTest.class
+cl\duoc\jv0101\caso04\autenticacion\CredencialServiceTest.class
+cl\duoc\jv0101\caso04\autenticacion\cucumber\CucumberRunnerTest.class
+cl\duoc\jv0101\caso04\autenticacion\OpenApiConfigTest.class

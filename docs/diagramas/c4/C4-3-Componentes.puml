@@ -1,0 +1,30 @@
+@startuml C4-3-Componentes
+!include <C4/C4_Component>
+
+title ms-autenticacion — C4 Nivel 3: Componentes internos
+
+LAYOUT_WITH_LEGEND()
+
+Person(actor, "Cliente bancario", "Opera sus cuentas y transferencias")
+Container_Boundary(ms, "ms-autenticacion — Spring Boot 3 (ECS Fargate)") {
+
+  Component(rest, "CredencialController", "Spring MVC REST", "Expone /api/credenciales: crear, consultar, actualizar y eliminar")
+  Component(svc, "CredencialService", "Java 21", "Lógica de negocio del dominio: validaciones, reglas y transiciones")
+  Component(cognito, "CognitoClient", "AWS SDK", "Registro, login y emisión de JWT por rol")
+  ComponentDb(repo, "CredencialRepository", "Spring Data JPA", "Persistencia en la base de datos propia del servicio")
+  Component(pub, "PublicadorEventos", "AWS SDK (EventBridge)", "Publica usuario.registrado y rol.cambiado")
+}
+
+Container(apigw, "API Gateway", "Amazon API Gateway", "JWT + throttling")
+Container(ev, "Amazon EventBridge", "Servicio AWS", "Bus de eventos de dominio")
+
+Rel(actor, apigw, "Usa la API", "HTTPS + JWT")
+Rel(apigw, rest, "Enruta /api/credenciales", "REST")
+Rel(rest, svc, "Delega el caso de uso")
+Rel(svc, cognito, "Autentica/registra", "AWS SDK")
+Rel(svc, repo, "Persiste el perfil", "JPA / SQL")
+Rel(svc, pub, "Publica el evento", "AWS SDK")
+Rel(pub, ev, "Envía el evento", "AWS SDK")
+
+SHOW_LEGEND()
+@enduml
