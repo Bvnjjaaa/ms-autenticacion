@@ -1,6 +1,5 @@
-C:\Users\benja\OneDrive\Documentos\caso04\ms\autenticacion\src\main\java\cl\duoc\jv0101\caso04\autenticacion\config\OpenApiConfig.java
-C:\Users\benja\OneDrive\Documentos\caso04\ms\autenticacion\src\main\java\cl\duoc\jv0101\caso04\autenticacion\controller\CredencialController.java
-C:\Users\benja\OneDrive\Documentos\caso04\ms\autenticacion\src\main\java\cl\duoc\jv0101\caso04\autenticacion\CredencialApplication.java
-C:\Users\benja\OneDrive\Documentos\caso04\ms\autenticacion\src\main\java\cl\duoc\jv0101\caso04\autenticacion\model\Credencial.java
-C:\Users\benja\OneDrive\Documentos\caso04\ms\autenticacion\src\main\java\cl\duoc\jv0101\caso04\autenticacion\repository\CredencialRepository.java
-C:\Users\benja\OneDrive\Documentos\caso04\ms\autenticacion\src\main\java\cl\duoc\jv0101\caso04\autenticacion\service\CredencialService.java
+C:\Users\benja\Documents\EP02\ms-autenticacion\src\main\java\cl\novabank\autenticacion\repository\UsuarioRepository.java
+C:\Users\benja\Documents\EP02\ms-autenticacion\src\main\java\cl\novabank\autenticacion\model\Usuario.java
+C:\Users\benja\Documents\EP02\ms-autenticacion\src\main\java\cl\novabank\autenticacion\service\AutenticacionService.java
+C:\Users\benja\Documents\EP02\ms-autenticacion\src\main\java\cl\novabank\autenticacion\AutenticacionApplication.java
+C:\Users\benja\Documents\EP02\ms-autenticacion\src\main\java\cl\novabank\autenticacion\controller\AutenticacionController.java
