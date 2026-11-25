@@ -3,6 +3,8 @@ package cl.novabank.autenticacion.service;
 import cl.novabank.autenticacion.model.Usuario;
 import cl.novabank.autenticacion.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,7 @@ public class AutenticacionService {
     private static final String ROLES_VALIDOS = "(?:CLIENTE|OPERADOR|AUDITOR)";
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder = Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
 
     public Usuario registrarUsuario(Usuario usuario) {
         if (usuario.getPassword() == null || usuario.getPassword().isBlank()) {
@@ -40,15 +43,17 @@ public class AutenticacionService {
         if (usuario.getActivo() == null) {
             usuario.setActivo(true);
         }
+        usuario.setId(null);
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         return usuarioRepository.save(usuario);
     }
 
     public String login(String rut, String password) {
-        if (rut == null || password == null || !validarRut(rut)) {
+        if (rut == null || password == null || password.length() > 128 || !validarRut(rut)) {
             return null;
         }
         Optional<Usuario> usuarioOpt = usuarioRepository.findByRut(normalizarRut(rut));
-        if (usuarioOpt.isEmpty() || !usuarioOpt.get().getPassword().equals(password)) {
+        if (usuarioOpt.isEmpty() || !passwordEncoder.matches(password, usuarioOpt.get().getPassword())) {
             return null;
         }
         if (Boolean.FALSE.equals(usuarioOpt.get().getActivo())) {

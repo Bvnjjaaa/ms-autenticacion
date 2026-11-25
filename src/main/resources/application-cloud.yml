@@ -1,0 +1,20 @@
+spring:
+  config:
+    import: "configtree:/run/secrets/"
+  datasource:
+    url: "jdbc:postgresql://${DB_HOST}:5432/novabank?currentSchema=${DB_SCHEMA}&sslmode=verify-full&sslrootcert=/etc/ssl/certs/rds.pem"
+    driver-class-name: org.postgresql.Driver
+    username: "${DB_USER}"
+    hikari:
+      maximum-pool-size: 4
+      minimum-idle: 1
+  jpa:
+    show-sql: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  h2:
+    console:
+      enabled: false
+server:
+  shutdown: graceful

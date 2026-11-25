@@ -5,7 +5,7 @@ Microservicio correspondiente al **caso NovaBank** (Banca digital / fintech) de 
 | | |
 |---|---|
 | **Asignatura** | JVY0101 — Java: Diseño y Construcción de Soluciones Nativas en Nube |
-| **Stack** | Spring Boot 3.2.5 · Java 17 · Maven Wrapper · Spring Data JPA · H2 Database |
+| **Stack** | Spring Boot 3.5.16 · Java 17 · Maven Wrapper · Spring Data JPA · H2 Database |
 | **Arquitectura** | Capas (Controller, Service, Repository, Model) |
 | **Puerto** | 8081 |
 
@@ -55,3 +55,9 @@ Al ejecutar el servicio en el puerto `8081`, se puede acceder a la consola de pe
 ```bash
 .\mvnw.cmd test
 ```
+
+## Ejecución EP3
+
+Desde la carpeta de este servicio, ejecuta `docker compose up --build --wait`. El puerto local es `8081` y la salud se consulta en `http://localhost:8081/actuator/health`. Para compilar y ejecutar las pruebas con JDK 17 y Maven, usa `mvn -B -ntp clean verify`.
+
+La imagen se construye en dos etapas y ejecuta la aplicación con UID 10001. El perfil local usa H2 y el perfil `cloud` usa PostgreSQL con credenciales montadas desde Docker Secrets.

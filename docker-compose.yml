@@ -1,8 +1,6 @@
 services:
-  autenticacion-svc:
+  autenticacion:
     build: .
-    image: duoc/jv0101-caso04-autenticacion:1.0.0
-    container_name: caso04-autenticacion-svc
+    image: novabank/autenticacion:local
     ports:
-      - "${PORT:-8080}:8080"
-    restart: unless-stopped
+      - "127.0.0.1:${PORT:-8081}:8080"
